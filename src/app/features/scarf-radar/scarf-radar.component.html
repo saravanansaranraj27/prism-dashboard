@@ -1,0 +1,61 @@
+<mat-card class="chart-card">
+  <mat-card-header>
+    <div class="header-content">
+      <div class="title-row">
+        <mat-icon class="chart-icon">psychology</mat-icon>
+        <mat-card-title>SCARF Behavioral Bias</mat-card-title>
+      </div>
+      <mat-card-subtitle>Neurocognitive Risk Distribution</mat-card-subtitle>
+
+      @if (activeImpact()) {
+        <div class="impact-display active">
+          <mat-icon>warning_amber</mat-icon>
+          <span>{{ activeImpact() }}</span>
+        </div>
+      }
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="chart-container" (mouseleave)="onDeselect()">
+      <ngx-charts-polar-chart
+        [results]="chartData()"
+        [xAxis]="true"
+        [yAxis]="true"
+        [showXAxisLabel]="false"
+        [showYAxisLabel]="true"
+        yAxisLabel="Redemption Trigger Share (%)"
+        [animations]="true"
+        [scheme]="colorScheme"
+        [autoScale]="true"
+        [tooltipDisabled]="false"
+        [curve]="curve"
+        [showGridLines]="true"
+        (select)="onSelect($event)"
+        (deselect)="onDeselect()"
+      />
+    </div>
+
+    <div class="scarf-legend">
+      <span class="legend-title">SCARF Dimensions</span>
+      <div class="legend-items">
+        <span class="legend-item" title="Status: Peer-comparison anxiety">
+          <mat-icon class="legend-icon status">emoji_events</mat-icon> Status
+        </span>
+        <span class="legend-item" title="Certainty: Regulatory ambiguity">
+          <mat-icon class="legend-icon certainty">help_outline</mat-icon>
+          Certainty
+        </span>
+        <span class="legend-item" title="Autonomy: Control perception">
+          <mat-icon class="legend-icon autonomy">pan_tool</mat-icon> Autonomy
+        </span>
+        <span class="legend-item" title="Relatedness: Institutional trust">
+          <mat-icon class="legend-icon relatedness">group</mat-icon> Relatedness
+        </span>
+        <span class="legend-item" title="Fairness: Fee equity">
+          <mat-icon class="legend-icon fairness">balance</mat-icon> Fairness
+        </span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

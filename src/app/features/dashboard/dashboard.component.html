@@ -1,0 +1,75 @@
+<div class="dashboard-container fade-in">
+  <header class="dashboard-header">
+    <div class="brand">
+      <div class="title-row">
+        <mat-icon class="title-icon">dashboard</mat-icon>
+        <h1>PRISM Dashboard</h1>
+      </div>
+      <p class="subtitle">
+        Proactive Redemption Interception via SCARF Metrics
+      </p>
+    </div>
+
+    <div class="actions">
+      <button
+        mat-icon-button
+        (click)="toggleTheme()"
+        class="theme-toggle"
+        aria-label="Toggle theme"
+      >
+        <mat-icon>{{ isDarkMode() ? "light_mode" : "dark_mode" }}</mat-icon>
+      </button>
+
+      <button class="export-btn-custom" (click)="exportData()">
+        <mat-icon>download</mat-icon>
+        <span>Export CSV</span>
+      </button>
+    </div>
+  </header>
+
+  @if (isAlertActive()) {
+    <div class="alert-banner">
+      <mat-icon>warning</mat-icon>
+      <span>
+        <strong>TIER-2 INTERCEPTION ACTIVE:</strong> SCI below 0.6 threshold
+        detected. Automated liquidity protocols engaged.
+      </span>
+    </div>
+  }
+
+  <div class="dashboard-grid">
+    <app-sci-monitor [data]="sciData()" />
+    <app-scarf-radar [metrics]="scarfMetrics()" />
+    <app-compliance-cards [metrics]="complianceData()" class="full-width" />
+  </div>
+
+  <footer class="dashboard-footer">
+    <div class="sdg-alignment">
+      <span class="sdg-label">Aligned with UN SDGs:</span>
+      <div class="sdg-icons">
+        <span class="sdg-badge sdg-8" title="Decent Work and Economic Growth"
+          >SDG 8</span
+        >
+        <span
+          class="sdg-badge sdg-9"
+          title="Industry, Innovation and Infrastructure"
+          >SDG 9</span
+        >
+        <span class="sdg-badge sdg-10" title="Reduced Inequalities"
+          >SDG 10</span
+        >
+        <span
+          class="sdg-badge sdg-16"
+          title="Peace, Justice and Strong Institutions"
+          >SDG 16</span
+        >
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <p class="copyright-text">
+      Built with Angular & SCSS © 2026 Saran Raj Saravanan
+    </p>
+  </footer>
+</div>

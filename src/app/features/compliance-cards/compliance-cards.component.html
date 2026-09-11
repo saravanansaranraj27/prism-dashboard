@@ -1,0 +1,13 @@
+<div class="compliance-grid">
+  @for (metric of metrics(); track metric.label) {
+    <app-metric-card
+      [label]="metric.label"
+      [value]="metric.value"
+      [unit]="metric.unit"
+      [benchmark]="metric.benchmark"
+      [benchmarkLabel]="metric.benchmarkLabel ?? 'Benchmark'"
+      [status]="metric.status"
+      [icon]="getIcon(metric.label)"
+    />
+  }
+</div>

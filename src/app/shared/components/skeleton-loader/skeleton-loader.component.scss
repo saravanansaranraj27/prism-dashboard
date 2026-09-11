@@ -1,0 +1,39 @@
+.skeleton-container {
+  padding: 32px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.skeleton-header {
+  height: 60px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 24px;
+}
+
+.skeleton-card {
+  height: 350px;
+  border-radius: var(--radius);
+}
+
+.full-width {
+  grid-column: 1 / -1;
+  height: 200px;
+}
+
+.skeleton-header,
+.skeleton-card {
+  background: linear-gradient(
+    90deg,
+    var(--bg-subtle) 25%,
+    var(--border-color) 50%,
+    var(--bg-subtle) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}

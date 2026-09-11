@@ -1,0 +1,25 @@
+<div class="metric-card">
+  <div class="card-top">
+    <span class="status-badge" [class]="statusClass()">
+      {{ status() }}
+    </span>
+    <mat-icon class="card-icon">{{ icon() }}</mat-icon>
+  </div>
+
+  <div class="card-body">
+    <div class="label-text">{{ label() }}</div>
+
+    <div class="metric-value">
+      {{ value() }}<span class="unit">{{ unit() }}</span>
+    </div>
+  </div>
+
+  @if (hasBenchmark()) {
+    <div class="card-footer">
+      <span class="benchmark-text">
+        {{ benchmarkLabel() }}: {{ benchmark()
+        }}{{ unit() === "%" ? "%" : " " + unit() }}
+      </span>
+    </div>
+  }
+</div>
