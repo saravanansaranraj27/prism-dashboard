@@ -13,11 +13,11 @@
     <div class="actions">
       <button
         mat-icon-button
-        (click)="toggleTheme()"
+        (click)="theme.toggle()"
         class="theme-toggle"
         aria-label="Toggle theme"
       >
-        <mat-icon>{{ isDarkMode() ? "light_mode" : "dark_mode" }}</mat-icon>
+        <mat-icon>{{ theme.isDark() ? "light_mode" : "dark_mode" }}</mat-icon>
       </button>
 
       <button class="export-btn-custom" (click)="exportData()">

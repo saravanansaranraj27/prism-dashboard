@@ -65,25 +65,35 @@
 }
 
 .theme-toggle {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  backdrop-filter: blur(8px);
-  transition: all var(--transition);
   width: 44px;
   height: 44px;
-  border-radius: var(--radius);
+  padding: 0;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  background: var(--accent);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  box-shadow: 0 4px 16px -4px var(--accent-glow);
+  transition: all var(--transition);
 
-  &:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px -8px var(--accent-glow);
+  svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+    color: currentColor;
+    stroke: currentColor;
   }
+}
+
+:host-context([data-theme="dark"]) .theme-toggle {
+  color: #000000;
+}
+
+:host-context([data-theme="light"]) .theme-toggle {
+  color: #ffffff;
 }
 
 .export-btn-custom {
@@ -171,6 +181,11 @@
   grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
   gap: 24px;
   flex: 1;
+  min-width: 0;
+
+  > * {
+    min-width: 0;
+  }
 }
 
 .full-width {

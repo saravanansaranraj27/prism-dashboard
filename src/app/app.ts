@@ -7,7 +7,6 @@ import {
   NavigationCancel,
   NavigationError,
 } from '@angular/router';
-
 import { SkeletonLoaderComponent } from './shared/components/skeleton-loader/skeleton-loader.component';
 
 @Component({

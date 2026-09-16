@@ -12,6 +12,7 @@
   overflow: hidden;
   box-shadow: var(--shadow);
   height: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
 
@@ -39,6 +40,8 @@
       min-height: 320px;
       position: relative;
       width: 100%;
+      min-width: 0;
+      overflow: hidden;
     }
 
     ngx-charts-line-chart {
@@ -177,6 +180,17 @@
   ::ng-deep .mat-mdc-card-subtitle {
     padding-left: 0;
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  ::ng-deep .chart-container {
+    padding-left: 8px;
+    padding-right: 8px;
+    min-height: 220px;
+  }
+  ::ng-deep .line-series .label {
+    font-size: 9px;
   }
 }
 
