@@ -30,7 +30,7 @@ export class App {
       ) {
         setTimeout(() => {
           this.isLoading.set(false);
-        }, 500);
+        }, 800);
       }
     });
   }
