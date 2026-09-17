@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, inject } from '@angular/core';
 import {
   RouterOutlet,
   Router,
@@ -8,6 +8,7 @@ import {
   NavigationError,
 } from '@angular/router';
 import { SkeletonLoaderComponent } from './shared/components/skeleton-loader/skeleton-loader.component';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ import { SkeletonLoaderComponent } from './shared/components/skeleton-loader/ske
 })
 export class App {
   isLoading = signal(false);
+  private theme = inject(ThemeService);
 
   constructor(router: Router) {
     router.events.subscribe((event) => {
