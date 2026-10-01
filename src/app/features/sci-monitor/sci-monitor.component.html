@@ -1,0 +1,67 @@
+<mat-card class="chart-card">
+  <mat-card-header>
+    <div class="header-content">
+      <div class="title-row">
+        <mat-icon class="chart-icon">trending_up</mat-icon>
+        <mat-card-title>Small-Cap Stability Index (SCI)</mat-card-title>
+      </div>
+      <mat-card-subtitle>
+        Threshold: 0.6 | Current:
+        <strong
+          [style.color]="
+            currentValueNum() > 0.6 ? 'var(--success)' : 'var(--error)'
+          "
+        >
+          {{ currentValueDisplay() }}
+        </strong>
+      </mat-card-subtitle>
+
+      <div class="hover-event-info" [class.visible]="hoveredEvent()">
+        <span class="event-date">{{ hoveredDate() }}</span>
+        <span class="event-badge">{{ hoveredEvent() }}</span>
+      </div>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="chart-container" (mouseleave)="onChartLeave()">
+      <ngx-charts-line-chart
+        [results]="chartData()"
+        [xAxis]="true"
+        [yAxis]="true"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        xAxisLabel="Timeline (2020-2025)"
+        yAxisLabel="Stability Score"
+        [referenceLines]="referenceLines"
+        [animations]="true"
+        [scheme]="colorScheme"
+        [autoScale]="false"
+        [yScaleMin]="0.4"
+        [yScaleMax]="0.9"
+        [tooltipDisabled]="false"
+        [curve]="curve"
+        (select)="onSelect($event)"
+        (deselect)="onDeselect()"
+      />
+    </div>
+
+    <div class="crisis-legend">
+      <span class="legend-title">Crisis Events</span>
+      <div class="legend-items">
+        <span class="legend-item">
+          <span class="dot red"></span> COVID Crash (Q1 2020)
+        </span>
+        <span class="legend-item">
+          <span class="dot orange"></span> Rate Hike Cycle (2023)
+        </span>
+        <span class="legend-item">
+          <span class="dot purple"></span> Liquidity Crisis (2024)
+        </span>
+        <span class="legend-item">
+          <span class="dot green"></span> PRISM Intervention
+        </span>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
